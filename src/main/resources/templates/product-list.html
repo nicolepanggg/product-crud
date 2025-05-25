@@ -3,19 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Product list</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .pagination { margin-top: 20px; }
-        .pagination a { margin: 0 5px; text-decoration: none; }
-        .pagination a.active { font-weight: bold; }
-        .filter-form { margin-bottom: 20px; }
-    </style>
+
 </head>
 <body>
-<h1>Product List</h1>
+
+<div th:if="${message}" style="color: green;">
+    <p th:text="${message}"></p>
+</div>
 
 <!-- Product List -->
 <div class="filter-form">
@@ -37,7 +31,6 @@
         <th>name</th>
         <th>price</th>
         <th>describe</th>
-        <th></th>
         <th></th>
     </tr>
     </thead>

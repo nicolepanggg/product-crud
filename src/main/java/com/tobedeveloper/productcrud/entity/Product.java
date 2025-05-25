@@ -4,10 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Entity //Marked as a JPA entity, corresponding to the product table in PostgreSQL
 public class Product {
-
     @Id //define the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //uses PostgreSQL's sequence to automatically increment.
     private Long id;

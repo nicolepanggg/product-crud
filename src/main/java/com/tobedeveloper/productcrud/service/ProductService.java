@@ -5,12 +5,15 @@ import com.tobedeveloper.productcrud.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional; //handle potentially empty (null) values, thereby avoiding NullPointerException
 //and improving code readability and safety
+
+
 
 @Service
 public class ProductService {
@@ -29,7 +32,7 @@ public class ProductService {
 
     // Get all products
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     // Get product by ID

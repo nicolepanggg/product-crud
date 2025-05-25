@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Confirm product information</title>
+    </head>
+    <body>
+        <h2>Confirm product information</h2>
+        <p>Please confirm whether the following information is correct：</p>
+        <p>Product Name: <span th:text="${product.name}"></span></p>
+        <p>Price: <span th:text="${product.price}"></span></p>
+
+        <!-- Confirmation Form -->
+        <form th:action="@{/confirm-product}" th:object="${product}" method="post">
+            <input type="hidden" th:field="*{name}" />
+            <input type="hidden" th:field="*{price}" />
+            <button type="submit">Confirm submission</button>
+        </form>
+
+        <!-- Cancel form -->
+        <form th:action="@{/cancel-product}" method="post">
+            <button type="submit">Cancel</button>
+        </form>
+    </body>
+</html>

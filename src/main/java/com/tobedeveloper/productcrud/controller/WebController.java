@@ -5,9 +5,11 @@ import com.tobedeveloper.productcrud.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,14 +19,13 @@ public class WebController {
 
     @Autowired
     private ProductService productService;
-
     // Home page: Display product list (pagination)
     @GetMapping("/")
     public String showProductList(  // Handle paging and display product lists
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "10") int size,
             Model model) {
-        Page<Product> productPage = productService.getAllProducts(PageRequest.of(page, size));
+        Page<Product> productPage = productService.getAllProducts(PageRequest.of(page, size, Sort.by("id").descending()));
         model.addAttribute("products", productPage.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", productPage.getTotalPages());
@@ -51,11 +52,35 @@ public class WebController {
         return "product-form";  // Specifies the name of the Thymeleaf template to render
     }
 
-    // Handling new products
+    // Process form submission and go to confirmation page
+    //@ModelAttribute("product") tells Spring to automatically bind the form submission data to the Product object
     @PostMapping("/add")
-    public String addProduct(Product product) {
+    public String addProduct(@ModelAttribute("product") Product product, Model model) {
+        //productService.createProduct(product);
+        model.addAttribute("product", product);
+        return "confirm-product";
+    }
+
+    // Handle submission of confirmation page
+    @PostMapping("/confirm-product")
+    public String confirmProduct(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size,
+        @ModelAttribute("product") Product product,
+        RedirectAttributes redirectAttributes) {
+        // Save products to database
         productService.createProduct(product);
+        //Display Message: Use RedirectAttributes to pass a one-time success message
+        redirectAttributes.addFlashAttribute("message", "Product successfully added！");
+        redirectAttributes.addAttribute("page", page);
+        redirectAttributes.addAttribute("size", size);
         return "redirect:/";
+    }
+
+    //Process the cancellation operation and return to the new page
+    @PostMapping("/cancel-product")
+    public String cancelProduct() {
+        return "redirect:/add";
     }
 
     // Display the edit product form
@@ -78,5 +103,4 @@ public class WebController {
         productService.deleteProduct(id);
         return "redirect:/";
     }
-
 }
