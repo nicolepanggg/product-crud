@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>New Products</title>
-</head>
+<!-- Insert top.html -->
+<div th:insert="~{layout/top :: top}"></div>
 <body>
-<h1 th:text="${id} ? 'Edit Products' : 'New Products'"></h1>
-<form th:action="${id} ? @{/edit/{id}(id=${id})} : @{/add}" th:object="${product}" method="post">
-    <div class="form-group">
-        <label>name: </label>
-        <input type="text" th:field="*{name}" required/>
-    </div>
-    <div class="form-group">
-        <label>Price:</label>
-        <input type="number" step="0.01" th:field="*{price}" required/>
-    </div>
-    <div class="form-group">
-        <label>Describe:</label>
-        <textarea th:field="*{description}" required></textarea>
-    </div>
-    <button type="submit">Save</button>
-</form>
-<a href="/">Back to product list</a>
+    <h1 th:text="${id} ? 'Edit Products' : 'New Products'"></h1>
+    <form th:action="${id} ? @{/edit/{id}(id=${id})} : @{/add}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label>name: </label>
+            <input type="text" th:field="*{name}" required/>
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input type="number" step="0.01" th:field="*{price}" required/>
+        </div>
+        <div class="form-group">
+            <label>Describe:</label>
+            <textarea th:field="*{description}" required></textarea>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+    <a href="/">Back to product list</a>
+    <!-- Insert footer.html -->
+    <div th:insert="~{layout/footer :: footer}"></div>
 </body>
-</html>

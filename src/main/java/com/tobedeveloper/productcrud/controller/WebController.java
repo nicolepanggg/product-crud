@@ -26,6 +26,7 @@ public class WebController {
             @RequestParam(defaultValue = "10") int size,
             Model model) {
         Page<Product> productPage = productService.getAllProducts(PageRequest.of(page, size, Sort.by("id").descending()));
+        model.addAttribute("pageTitle", "Product list");
         model.addAttribute("products", productPage.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", productPage.getTotalPages());
@@ -49,6 +50,7 @@ public class WebController {
     @GetMapping("/add")
     public String showAddProductForm(Model model) {
         model.addAttribute("product", new Product());
+        model.addAttribute("pageTitle", "New Products");
         return "product-form";  // Specifies the name of the Thymeleaf template to render
     }
 
@@ -88,6 +90,7 @@ public class WebController {
     public String showEditProductForm(@PathVariable Long id, Model model) {
         Optional<Product> product = productService.getProductById(id);
         model.addAttribute("product", product);
+        model.addAttribute("pageTitle", "Update information");
         return "product-form";
     }
 
