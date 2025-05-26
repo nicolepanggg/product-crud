@@ -16,7 +16,6 @@ import java.util.Optional;
 
 @Controller // Used to render Thymeleaf templates
 public class WebController {
-
     @Autowired
     private ProductService productService;
     // Home page: Display product list (pagination)

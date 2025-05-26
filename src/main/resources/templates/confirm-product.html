@@ -1,23 +1,27 @@
-<!-- Insert top.html -->
-<div th:insert="~{layout/top :: top}"></div>
-<body>
-    <h2>Confirm product information</h2>
-    <p>Please confirm whether the following information is correct：</p>
-    <p>Product Name: <span th:text="${product.name}"></span></p>
-    <p>Price: <span th:text="${product.price}"></span></p>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="~{layout/top :: top}"></th:block>
+    </head>
+    <body>
+        <h1>Confirm product information</h1>
+        <p>Please confirm whether the following information is correct：</p>
+        <p>Product Name: <span th:text="${product.name}"></span></p>
+        <p>Price: <span th:text="${product.price}"></span></p>
 
-    <!-- Confirmation Form -->
-    <form th:action="@{/confirm-product}" th:object="${product}" method="post">
-        <input type="hidden" th:field="*{name}" />
-        <input type="hidden" th:field="*{price}" />
-        <button type="submit">Confirm submission</button>
-    </form>
+        <!-- Confirmation Form -->
+        <form th:action="@{/confirm-product}" th:object="${product}" method="post">
+            <input type="hidden" th:field="*{name}" />
+            <input type="hidden" th:field="*{price}" />
+            <button type="submit">Confirm submission</button>
+        </form>
 
-    <!-- Cancel form -->
-    <form th:action="@{/cancel-product}" method="post">
-        <button type="submit">Cancel</button>
-    </form>
+        <!-- Cancel form -->
+        <form th:action="@{/cancel-product}" method="post">
+            <button type="submit">Cancel</button>
+        </form>
 
-    <!-- Insert footer.html -->
-    <div th:insert="~{layout/footer :: footer}"></div>
-</body>
+        <!-- Insert footer.html -->
+        <div th:insert="~{layout/footer :: footer}"></div>
+    </body>
+</html>

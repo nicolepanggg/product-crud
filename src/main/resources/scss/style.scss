@@ -1,0 +1,17 @@
+$primary-color: #007bff;
+
+footer{
+  background-color: $primary-color;
+  text-align:center;
+  position: absolute;
+  width:100%;
+  left: 0;
+  bottom:0;
+  padding:10px;
+}
+
+h1 {
+  color: blue !important;
+}
+
+@import "../node_modules/scss/bootstrap";

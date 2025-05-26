@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="top">
     <meta charset="UTF-8">
     <title th:text="${pageTitle}">Default Title</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
 </head>
-<body>
-    <header th:fragment="top">
-        <h1 th:text="${pageTitle}">Scrum Board Admin</h1>
-    </header>
-    </div>
-</body>
-</html>
