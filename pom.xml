@@ -73,7 +73,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <inputPath>${basedir}/src/main/resources/scss/</inputPath>
+                    <inputPath>${basedir}/src/main/resources/scss/main/</inputPath>
                     <outputPath>${basedir}/src/main/resources/static/css/</outputPath>
                     <sourceMapOutputPath>${basedir}/src/main/resources/static/css/</sourceMapOutputPath>
                 </configuration>
