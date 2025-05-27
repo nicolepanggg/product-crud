@@ -37,6 +37,8 @@ public class WebController {
     public String showProductsByPriceRange(
         @RequestParam(defaultValue = "0") double minPrice, // Extract the value named minPrice from the URL query parameter (e.g. /price-range?minPrice=10.0)
         @RequestParam(defaultValue = "1000000") double maxPrice,
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size,
         Model model) {
             List<Product> products = productService.getProductsByPriceRange(minPrice, maxPrice);
             model.addAttribute("products", products); //model. is to pass data from the controller to the view so that it can be displayed or used in the front-end page
