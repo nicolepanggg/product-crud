@@ -11,5 +11,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //@Query("SELECT p FROM Product p ORDER BY p.id DESC")
     Product findByName(String name); // Custom query method: search by product name
     Page<Product> findAll(Pageable pageable); // Page
+    Page<Product> findByPriceBetween(double minPrice, double maxPrice, Pageable pageable);
     List<Product> findByPriceBetween(double minPrice, double maxPrice);
 }

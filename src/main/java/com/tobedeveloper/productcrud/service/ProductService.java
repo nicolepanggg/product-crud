@@ -5,6 +5,7 @@ import com.tobedeveloper.productcrud.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +69,10 @@ public class ProductService {
 
     public Page<Product> getAllProducts(PageRequest pageRequest) {
         return productRepository.findAll(pageRequest);
+    }
+
+    public Page<Product> getProductsByPriceRange(double minPrice, double maxPrice, Pageable pageable) {
+        return productRepository.findByPriceBetween(minPrice, maxPrice, pageable);
     }
 
     public List<Product> getProductsByPriceRange(double minPrice, double maxPrice) {

@@ -77,7 +77,7 @@ public class ProductController {
         return productService.getAllProducts(PageRequest.of(page, size));
     }
 
-    //Get price range
+    //*Get price range
     @GetMapping("/price-range")
     public List<Product> getProductsByPriceRange(@RequestParam double minPrice, @RequestParam double maxPrice) {
         return productService.getProductsByPriceRange(minPrice, maxPrice);
