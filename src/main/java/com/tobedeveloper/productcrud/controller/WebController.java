@@ -5,7 +5,6 @@ import com.tobedeveloper.productcrud.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +24,7 @@ public class WebController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             Model model) {
+
         Page<Product> productPage = productService.getAllProducts(PageRequest.of(page, size, Sort.by("id").descending()));
         model.addAttribute("pageTitle", "Product list");
         model.addAttribute("products", productPage.getContent());
@@ -42,12 +42,10 @@ public class WebController {
         @RequestParam(defaultValue = "10") int size,
         Model model) {
             // Create a Pageable object, using id descending order consistent with showProductList
-            Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
-
+            //Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending()); //PageRequest internal function
             // Get paging data from the service layer
-            Page<Product> productPage = productService.getProductsByPriceRange(minPrice, maxPrice, pageable);
-
-            List<Product> products = productService.getProductsByPriceRange(minPrice, maxPrice);
+            Page<Product> productPage = productService.getProductsByPriceRange(minPrice, maxPrice, PageRequest.of(page, size, Sort.by("id").descending()));
+            //List<Product> products = productService.getProductsByPriceRange(minPrice, maxPrice);
             //model. is to pass data from the controller to the view so that it can be displayed or used in the front-end page
             //model.addAttribute("products", products);
 
