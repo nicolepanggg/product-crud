@@ -4,6 +4,9 @@
         <th:block th:replace="~{layout/top :: top}"></th:block>
     </head>
     <body>
+        <!--breadcrumb-->
+        <div th:insert="~{layout/breadcrumb :: breadcrumb}"></div>
+
         <div class="container">
             <h1 th:text="${id} ? 'Edit Products' : 'New Products'"></h1>
             <form th:action="${id} ? @{/edit/{id}(id=${id})} : @{/add}" th:object="${product}" method="post" class="product-form">

@@ -30,6 +30,9 @@ public class WebController {
         model.addAttribute("products", productPage.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", productPage.getTotalPages());
+        //breadcrubs
+        model.addAttribute("breadcrumbs", new String[]{"Home", "Product List"});
+        model.addAttribute("currentPath", "/");
         return "product-list";
     }
 
@@ -56,6 +59,10 @@ public class WebController {
              model.addAttribute("pageSize", size);
              model.addAttribute("minPrice", minPrice);
              model.addAttribute("maxPrice", maxPrice);
+
+            //breadcrubs
+            model.addAttribute("breadcrumbs", new String[]{"Home", "Product List", "Price range filter"});
+            model.addAttribute("currentPath", "/price-range");
         return "product-list";
     }
 
@@ -64,6 +71,9 @@ public class WebController {
     public String showAddProductForm(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("pageTitle", "New Products");
+        //breadcrubs
+        model.addAttribute("breadcrumbs", new String[]{"Home","New Products"});
+        model.addAttribute("currentPath", "/add");
         return "product-form";  // Specifies the name of the Thymeleaf template to render
     }
 
@@ -89,6 +99,10 @@ public class WebController {
         redirectAttributes.addFlashAttribute("message", "Product successfully added！");
         redirectAttributes.addAttribute("page", page);
         redirectAttributes.addAttribute("size", size);
+
+        //breadcrubs
+        redirectAttributes.addAttribute("breadcrumbs", new String[]{"Home","confirm-product"});
+        redirectAttributes.addAttribute("currentPath", "/confirm-product");
         return "redirect:/";
     }
 
@@ -104,6 +118,11 @@ public class WebController {
         Optional<Product> product = productService.getProductById(id);
         model.addAttribute("product", product);
         model.addAttribute("pageTitle", "Update information");
+
+        //breadcrubs
+        model.addAttribute("breadcrumbs", new String[]{"Home","edit product"});
+        model.addAttribute("currentPath", "/edit/{id}");
+
         return "product-form";
     }
 

@@ -5,13 +5,14 @@
     </head>
     <body>
         <!--breadcrumb-->
-        
+        <div th:insert="~{layout/breadcrumb :: breadcrumb}"></div>
 
         <div class="container">
             <!-- Message for success insert -->
             <div th:if="${message}">
                 <p th:text="${message}"></p>
             </div>
+
             <!-- Product List -->
             <h1>Scrum Board Admin</h1>
             <div class="filter-form">

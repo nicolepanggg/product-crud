@@ -4,6 +4,9 @@
         <th:block th:replace="~{layout/top :: top}"></th:block>
     </head>
     <body>
+        <!--breadcrumb-->
+        <div th:insert="~{layout/breadcrumb :: breadcrumb}"></div>
+
         <div class="container">
             <h1>Confirm product information</h1>
             <div class="h4 mb-3">Please confirm whether the following information is correct：</div>
