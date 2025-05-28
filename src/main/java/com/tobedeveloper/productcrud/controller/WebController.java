@@ -83,6 +83,9 @@ public class WebController {
     public String addProduct(@ModelAttribute("product") Product product, Model model) {
         //productService.createProduct(product);
         model.addAttribute("product", product);
+        //breadcrubs
+        model.addAttribute("breadcrumbs", new String[]{"Home","confirm-product"});
+        model.addAttribute("currentPath", "/confirm-product");
         return "confirm-product";
     }
 
@@ -99,10 +102,6 @@ public class WebController {
         redirectAttributes.addFlashAttribute("message", "Product successfully added！");
         redirectAttributes.addAttribute("page", page);
         redirectAttributes.addAttribute("size", size);
-
-        //breadcrubs
-        redirectAttributes.addAttribute("breadcrumbs", new String[]{"Home","confirm-product"});
-        redirectAttributes.addAttribute("currentPath", "/confirm-product");
         return "redirect:/";
     }
 
