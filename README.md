@@ -35,6 +35,24 @@ product-crud-postgres/
 -  Create Controller.java in ".../productcrud/controller/ProductController.java" REST API endpoints, handling HTTP requests.
 -  Main application in ".../productcrud/ProductCrudApplication.java"
 
+
+SQL statement:
+CREATE TABLE product (
+    id INT PRIMARY KEY,
+    description VARCHAR(255),
+    name VARCHAR(100),
+    price DECIMAL(10,2)
+);
+
+INSERT INTO product (id, description, name, price) VALUES
+(1, 'High-quality wireless headphones with noise cancellation', 'Wireless Headphones', 199.99),
+(2, 'Smartphone with 128GB storage and 48MP camera', 'Smartphone X', 699.99),
+(3, 'Stainless steel water bottle, 500ml', 'Eco Bottle', 24.99),
+(4, 'Lightweight laptop with 16GB RAM', 'UltraBook Pro', 1299.99),
+(5, 'Bluetooth speaker with 360-degree sound', 'Mini Speaker', 89.99);
+
+
+
 Test API Method
 
 ###
