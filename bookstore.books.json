@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "67e8f93b3e16b8fb6738655c"
+  },
+  "title": "Name of the Wing",
+  "auther": "Patrick Rothfuss",
+  "pages": 500,
+  "genres": [
+    "fantasy",
+    "magical"
+  ],
+  "rating": 9
+},
+{
+  "_id": {
+    "$oid": "67e8fad23e16b8fb6738655e"
+  },
+  "title": "The Final Empire",
+  "auther": "Brandom Sanderson",
+  "pages": "450",
+  "generes": [
+    "fantasy",
+    "dystopian"
+  ],
+  "rating": 8
+},
+{
+  "_id": {
+    "$oid": "67e8fad23e16b8fb6738655f"
+  },
+  "title": "The Way of Kings",
+  "auther": "Brandon Sanderson",
+  "pages": "350",
+  "generes": [
+    "fantasy",
+    "dystopian"
+  ],
+  "rating": 9
+},
+{
+  "_id": {
+    "$oid": "67e8fad23e16b8fb67386560"
+  },
+  "title": "The Call of the Weird",
+  "auther": "Louis Theroux",
+  "pages": "350",
+  "generes": [
+    "non-fiction",
+    "strange",
+    "comedy"
+  ],
+  "rating": 7
+},
+{
+  "_id": {
+    "$oid": "67e9093b151291eac5b71236"
+  },
+  "title": "the Color of Magic",
+  "author": "Terry Pratchett",
+  "pages": 300,
+  "rating": 7,
+  "genres": [
+    "fantasy",
+    "magic"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67e90f9d151291eac5b71238"
+  },
+  "title": "Light",
+  "author": "Terry",
+  "pages": 250,
+  "rating": 6,
+  "genres": [
+    "fantasy"
+  ]
+},
+{
+  "_id": {
+    "$oid": "67e90f9d151291eac5b71239"
+  },
+  "title": "Dune",
+  "author": "Frank Herbert",
+  "pages": 500,
+  "rating": 10,
+  "genres": [
+    "sci-fi",
+    "dystopian"
+  ]
+}]
