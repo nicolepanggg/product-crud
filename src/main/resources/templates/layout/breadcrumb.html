@@ -1,0 +1,19 @@
+<div th:fragment="breadcrumb" class="container mt-3">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb" >
+            <li class="breadcrumb-item" th:each="crumb, iterStat : ${breadcrumbs}">
+                <a th:unless="${iterStat.last}" th:href="${iterStat.first} ? @{/} : @{/}" th:text="${crumb}"></a>
+                <span th:if="${iterStat.last}" th:text="${crumb}"></span>
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<!--iterStat.first: Is it the first element
+iterStat.last: Is it the last element
+iterStat.index: The current index (starting from 0).
+
+Conditional directive, which means that this <a> tag is rendered only when iterStat.last is false (that is, not the last item).
+This ensures that the last breadcrumb item is not displayed as a link (because usually the last item represents the current page and does not need to be clickable).
+
+-->
