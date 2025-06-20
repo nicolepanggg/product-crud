@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="~{layout/top :: top}"></th:block>
+    </head>
+    <body>
+        <div class="container">
+            <h1>login</h1>
+            <div th:if="${error}" class="error" th:text="${error}"></div>
+            <div th:if="${message}" class="message" th:text="${message}"></div>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="username" required/>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" name="password" required/>
+                </div>
+                <button type="submit">Login</button>
+                <a href="/register">Don't have an account? register</a>
+            </form>
+        </div>
+    </body>
+</html>

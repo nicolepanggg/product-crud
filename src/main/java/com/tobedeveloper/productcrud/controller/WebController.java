@@ -147,12 +147,10 @@ public class WebController {
     }
 
     //Register
-    @PostMapping("/register")
+    @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("pageTitle", "Register");
-        model.addAttribute("breadcrumbs", new String[]{"Home","Register"});
-        model.addAttribute("currentPath", "/register");
         return "register";
     }
 
@@ -187,6 +185,7 @@ public class WebController {
                                 @RequestParam(value = "logout", required = false) String logout, //required = false means this parameter is optional
                                 @RequestParam(value = "registered", required = false) String registered) {
         model.addAttribute("pageTitle", "Login");
+
         if (error != null) {  //Indicates login failure
             model.addAttribute("error", "Invalid email or password");
         }

@@ -4,8 +4,6 @@
         <th:block th:replace="~{layout/top :: top}"></th:block>
     </head>
     <body>
-        <!--breadcrumb-->
-        <div th:insert="~{layout/breadcrumb :: breadcrumb}"></div>
         <div class="container">
             <h1>Register</h1>
             <div th:if="${error}" class="error" th:text="${error}"></div>
@@ -26,7 +24,7 @@
                         <input type="text" th:field="*{name}" required/>
                         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
                     </div>
-                    <button type="submit">註冊</button>
+                    <button type="submit">Register</button>
                 </div>
             </form>
         </div>
