@@ -22,9 +22,11 @@ public class User implements UserDetails {
     private String email;
 
     @NotBlank(message = "Password cannot be empty")
+    @Size(min = 6, message = "Password must be at least 6 characters long")
     private String password;
 
     @NotBlank(message = "Name cannot be empty")
+    @Size(min = 2, message = "Name must be at least 2 characters")
     private String name;
 
     // Preset Roles
