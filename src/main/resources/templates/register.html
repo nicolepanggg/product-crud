@@ -24,7 +24,10 @@
                         <input type="text" th:field="*{name}" required/>
                         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
                     </div>
-                    <button type="submit">Register</button>
+                    <div class="form-group">
+                        <label></label>
+                        <button type="submit" class="btn btn-secondary">Register</button>
+                    </div>
                 </div>
             </form>
         </div>

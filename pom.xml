@@ -84,7 +84,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <inputPath>${basedir}/src/main/resources/scss/</inputPath>
+                    <inputPath>${basedir}/src/main/resources/static/scss/</inputPath>
                     <outputPath>${basedir}/src/main/resources/static/css/</outputPath>
                     <sourceMapOutputPath>${basedir}/src/main/resources/static/css/</sourceMapOutputPath>
                 </configuration>

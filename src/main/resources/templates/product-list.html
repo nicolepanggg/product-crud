@@ -8,6 +8,10 @@
         <div th:insert="~{layout/breadcrumb :: breadcrumb}"></div>
 
         <div class="container">
+            <div class="user-info text-end">
+                <span th:text="${currentUserName}"></span> | <a href="/logout">Log out</a>
+            </div>
+
             <!-- Message for success insert -->
             <div th:if="${message}">
                 <p th:text="${message}"></p>

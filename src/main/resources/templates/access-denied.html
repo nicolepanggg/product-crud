@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="~{layout/top :: top}"></th:block>
+    </head>
+    <body>
+        <!--breadcrumb-->
+        <div th:insert="~{layout/breadcrumb :: breadcrumb}"></div>
+
+        <div class="container">
+            <div class="user-info text-end">
+                <span th:text="${currentUserName}"></span> | <a href="/logout">Log out</a>
+            </div>
+            <h1>No permission</h1>
+            <div class="error">You do not have permission to access this page.</div>
+            <a href="/">Back to Home Page</a>
+        </div>
+    </body>
+</html>

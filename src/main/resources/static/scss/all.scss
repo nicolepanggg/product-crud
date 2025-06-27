@@ -1,0 +1,95 @@
+h1{
+  @extend .mt-3;
+  @extend .mb-4;
+}
+
+a{
+  @extend .text-link;
+  &:hover{
+    @extend .text-linkHover;
+  }
+}
+
+table{
+  @extend .table;
+  @extend .table-striped;
+  thead{
+    @extend .table-primary;
+  }
+}
+
+input{
+  @extend .rounded;
+  height: 1.9em;
+}
+
+textarea{
+  @extend .w-75;
+  @extend .m-2;
+  @extend .rounded;
+}
+
+.filter-form{
+  div{
+    @extend .mb-3;
+  }
+  form {
+    > div{
+        &:not(:nth-last-child(-n+2)) {
+          @extend .me-3;
+        }
+        &:last-child{
+          @extend .ms-2;
+        }
+      }
+    }
+  }
+
+.product-form {
+  .form-group {
+    @extend .py-2;
+    &:nth-child(odd){
+      @extend .bg-divStriped;
+    }
+    label{
+      @extend .ms-2;
+      @extend .fw-bold;
+      width: 8em;
+    }
+  }
+}
+
+button{
+  height: 30px !important;
+  line-height: 2px !important;
+}
+
+.btn-filter, .btn-save{
+  @extend .btn;
+  @extend .btn-third;
+  @extend .text-white;
+}
+
+.btn-cancel{
+  @extend .btn;
+  @extend .text-white;
+  @extend .btn-fourth;
+}
+
+.form-group{
+  @extend .mb-3;
+  label{
+    display: inline-block; 
+    width: 10em;
+  }
+  input { width: 30em; }
+  button { @extend .mt-3 }
+  .error { @extend .text-danger }
+  .message { @extend .text-fourth }
+}
+
+footer{
+  @extend .text-center;
+  @extend .mt-3;
+}
+

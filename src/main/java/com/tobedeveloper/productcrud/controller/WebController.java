@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,13 +28,34 @@ public class WebController {
     @Autowired
     private UserService userService;
 
+    //Helper method: Add the current user name to the model
+    @ModelAttribute
+    public void addCurrentUserNameToModel(Model model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) principal;
+            model.addAttribute("currentUserName", userDetails.getUsername());
+        } else if (principal instanceof String && ((String) principal).equals("anonymousUser")) {
+            model.addAttribute("currentUserName", "Guest");
+        } else {
+            model.addAttribute("currentUserName", "Unknown user");
+        }
+
+        System.out.println("Principal: " + principal + ", Type: " + principal.getClass().getName());
+        /*if (principal instanceof User) {
+            User user = (User) principal;
+            model.addAttribute("currentUserName", user.getName());
+        } else {
+            model.addAttribute("currentUserName", "Unknown user");
+        }*/
+    }
+
     // Home page: Display product list (pagination)
     @GetMapping("/")
     public String showProductList(  // Handle paging and display product lists
                                     @RequestParam(defaultValue = "0") int page,
                                     @RequestParam(defaultValue = "10") int size,
                                     Model model) {
-
         Page<Product> productPage = productService.getAllProducts(PageRequest.of(page, size, Sort.by("id").descending()));
         model.addAttribute("pageTitle", "Product list");
         model.addAttribute("products", productPage.getContent());
@@ -79,6 +102,7 @@ public class WebController {
     public String showAddProductForm(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("pageTitle", "New Products");
+        addCurrentUserNameToModel(model);
         //breadcrubs
         model.addAttribute("breadcrumbs", new String[]{"Home","New Products"});
         model.addAttribute("currentPath", "/add");
@@ -200,7 +224,8 @@ public class WebController {
 
     // No permission page
     @GetMapping("/access_denied")
-    public String accessDenied() {
+    public String accessDenied(Model model) {
+        model.addAttribute("pageTitle", "Access denied");
         return "access-denied";
     }
 }

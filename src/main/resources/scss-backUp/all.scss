@@ -1,5 +1,4 @@
 h1{
-  @extend .text-header;
   @extend .mt-3;
   @extend .mb-4;
 }
@@ -75,6 +74,18 @@ button{
   @extend .btn;
   @extend .text-white;
   @extend .btn-fourth;
+}
+
+.form-group{
+  @extend .mb-3;
+  label{
+    display: inline-block; 
+    width: 10em;
+  }
+  input { width: 30em; }
+  button { @extend .mt-3 }
+  .error { @extend .text-danger }
+  .message { @extend .text-fourth }
 }
 
 footer{

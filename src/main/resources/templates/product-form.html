@@ -8,6 +8,10 @@
         <div th:insert="~{layout/breadcrumb :: breadcrumb}"></div>
 
         <div class="container">
+            <div class="user-info text-end">
+                <span th:text="${currentUserName}"></span> | <a href="/logout">Log out</a>
+            </div>
+
             <h1 th:text="${id} ? 'Edit Products' : 'New Products'"></h1>
             <form th:action="${id} ? @{/edit/{id}(id=${id})} : @{/add}" th:object="${product}" method="post" class="product-form">
                 <div class="form-group">
