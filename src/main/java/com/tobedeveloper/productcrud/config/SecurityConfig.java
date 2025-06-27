@@ -29,20 +29,27 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/register", "/login", "/css/**").permitAll()
+                        .requestMatchers("/profile").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
+                        .usernameParameter("username")
                         .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
                 .exceptionHandling(ex -> ex
                         .accessDeniedPage("/access-denied")
+                )
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/logout")
                 )
                 .userDetailsService(userService);
         return http.build();
